@@ -3,6 +3,8 @@
 .env
 .env.backup
 .env.production
+.env.local
+.env.*.local
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -22,3 +24,58 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Laravel specific
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# Storage (keep structure, ignore files)
+storage/app/*
+!storage/app/.gitignore
+storage/app/public/*
+!storage/app/public/.gitignore
+storage/app/private/*
+!storage/app/private/.gitignore
+storage/framework/cache/*
+!storage/framework/cache/.gitignore
+storage/framework/cache/data/*
+!storage/framework/cache/data/.gitignore
+storage/framework/sessions/*
+!storage/framework/sessions/.gitignore
+storage/framework/testing/*
+!storage/framework/testing/.gitignore
+storage/framework/views/*
+!storage/framework/views/.gitignore
+storage/logs/*
+!storage/logs/.gitignore
+
+# Uploaded files (uncomment if you want to ignore uploaded images)
+# storage/app/public/boom-lifts/*
+
+# IDE
+.idea/
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel Mix
+/public/hot
+/public/storage
+/storage/*.key
+
+# Testing
+/.phpunit.cache
+.phpunit.result.cache
+
+# Package managers
+/node_modules
+/yarn-error.log
+/package-lock.json
+
+# Build files
+/public/build
+/public/mix-manifest.json
