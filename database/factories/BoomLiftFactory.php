@@ -16,10 +16,18 @@ class BoomLiftFactory extends Factory
      */
     public function definition(): array
     {
+        // Generate Indian coordinates (India's approximate boundaries)
+        // Latitude: 6.5°N to 35.5°N, Longitude: 68°E to 97°E
+        $latitude = fake()->randomFloat(8, 8.0, 37.0);
+        $longitude = fake()->randomFloat(8, 68.0, 97.0);
+
         return [
             'name' => fake()->words(3, true).' Boom Lift',
             'model' => fake()->bothify('BL-####'),
             'description' => fake()->paragraph(),
+            'address' => fake()->streetAddress().', '.fake()->city().', '.fake()->state().' '.fake()->postcode().', India',
+            'latitude' => $latitude,
+            'longitude' => $longitude,
             'specifications' => [
                 'max_height' => fake()->numberBetween(30, 150),
                 'platform_capacity' => fake()->numberBetween(113, 454),

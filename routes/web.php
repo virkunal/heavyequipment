@@ -21,6 +21,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [LoginController::class, 'store']);
     Route::get('/register', [RegisterController::class, 'show'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('/forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])->name('password.email');
 });
 
 Route::middleware('auth')->group(function () {
@@ -32,4 +34,5 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('boom-lifts', AdminBoomLiftController::class);
+    Route::get('rent-requests', [\App\Http\Controllers\Admin\RentalController::class, 'index'])->name('rentals.index');
 });

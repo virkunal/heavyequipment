@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - {{ config('app.name', 'Laravel') }}</title>
+    <title>Forgot Password - {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,21 +14,21 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .login-page {
+        .forgot-password-page {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .login-box {
+        .forgot-password-box {
             width: 360px;
             margin: auto;
         }
         .card-primary.card-outline {
             border-top: 3px solid #007bff;
         }
-        .login-box-msg {
+        .forgot-password-box-msg {
             margin: 0;
             text-align: center;
             padding: 20px 20px 10px 20px;
@@ -37,9 +37,8 @@
         }
     </style>
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <!-- /.login-logo -->
+<body class="hold-transition forgot-password-page">
+<div class="forgot-password-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <a href="{{ route('boom-lifts.index') }}" class="h1">
@@ -47,7 +46,14 @@
             </a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="forgot-password-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+
+            @if(session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
             @if($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -58,7 +64,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('password.email') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="email" 
@@ -74,40 +80,18 @@
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" 
-                           name="password" 
-                           class="form-control @error('password') is-invalid @enderror" 
-                           placeholder="Password" 
-                           required>
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
-                    </div>
-                    @error('password')
-                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                    @enderror
-                </div>
                 <div class="row">
-                    <div class="col-8">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                            <label class="form-check-label" for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-12">
                         <button type="submit" class="btn btn-primary w-100">
-                            <i class="fas fa-sign-in-alt"></i> Sign In
+                            <i class="fas fa-paper-plane"></i> Send Password Reset Link
                         </button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <p class="mb-1 mt-3">
-                <a href="{{ route('password.request') }}">I forgot my password</a>
+            <p class="mt-3 mb-1">
+                <a href="{{ route('login') }}">Login</a>
             </p>
             <p class="mb-0">
                 <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
@@ -117,7 +101,7 @@
     </div>
     <!-- /.card -->
 </div>
-<!-- /.login-box -->
+<!-- /.forgot-password-box -->
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -127,3 +111,4 @@
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+

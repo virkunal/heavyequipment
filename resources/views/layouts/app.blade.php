@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Boom Lift Rental') - {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Boomcart.in') - {{ config('app.name', 'Laravel') }}</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Bootstrap 5 -->
@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="{{ route('boom-lifts.index') }}" class="text-xl font-bold text-gray-900">Boom Lift Rental</a>
+                    <a href="{{ route('boom-lifts.index') }}" class="text-xl font-bold text-gray-900">Boomcart.in</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     @auth

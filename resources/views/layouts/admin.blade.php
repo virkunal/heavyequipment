@@ -79,6 +79,12 @@
                             <p>Boom Lifts</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.rentals.index') }}" class="nav-link {{ request()->routeIs('admin.rentals.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Rent Requests</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
